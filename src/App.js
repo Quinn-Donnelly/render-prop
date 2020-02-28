@@ -1,24 +1,21 @@
 import React from 'react';
 import logo from './logo.svg';
+import Timeline from './timeline/Timeline';
 import './App.css';
+import Todo from './design/TodoFetcher';
+import TodoItem from "./design/TodoItem";
+import LetterTodo from "./design/LetterTodo";
+import ErrorBoundary from "./ErrorBoundary";
+
+const fallback = (props) => <p>Sorry not ready right now...</p>
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Timeline />
+      <ErrorBoundary Fallback={fallback}>
+        <Todo Component={TodoItem} />
+      </ErrorBoundary>
     </div>
   );
 }
